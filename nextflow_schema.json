@@ -74,6 +74,26 @@
                 }
             }
         },
+        "fastp_options": {
+            "title": "FASTP options",
+            "type": "object",
+            "description": "Options for running FASTP",
+            "default": "",
+            "properties": {
+                "adapters": {
+                    "type": "string",
+                    "description": "File in FASTA format containing possible adapters to remove."
+                },
+                "save_merged": {
+                    "type": "boolean",
+                    "description": "Specify true to save files that failed to pass trimming thresholds."
+                },
+                "save_trimmed_fail": {
+                    "type": "boolean",
+                    "description": "Specify true to save all merged reads to the a file."
+                }
+            }
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -275,6 +295,9 @@
         },
         {
             "$ref": "#/definitions/reference_genome_options"
+        },
+        {
+            "$ref": "#/definitions/fastp_options"
         },
         {
             "$ref": "#/definitions/institutional_config_options"
