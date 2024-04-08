@@ -47,6 +47,9 @@ workflow MYPIPELINE {
         params.save_trimmed_fail,
         params.save_merged
     )
+    ch_multiqc_files = ch_multiqc_files.mix(FASTP.out.json.collect{it[1]}.ifEmpty([]))
+    ch_versions      = ch_versions.mix(FASTP.out.versions.first())
+    FASTP.out.json.collect{it[1]}.view()
 
     //
     // Collate and save software versions
